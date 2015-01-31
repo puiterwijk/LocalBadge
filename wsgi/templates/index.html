@@ -1,0 +1,48 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>Badge claimer</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+        <div class="jumbotron">
+            <div class="container">
+                <h2>
+                {% for category, message in get_flashed_messages(with_categories=true) %}
+                    <div class="alert alert-{{ category }}" role="alert">
+                        {% if category == "danger" %}
+                            <strong>error: </strong> {{ message }}
+                        {% else %}
+                            <strong>{{ category }}: </strong> {{ message }}
+                        {% endif %}
+                    </div>
+                </h2>
+                {% else %}
+                <br />
+                {% endfor %}
+
+                <h1>Enter your username to claim {{ badge }}</h1>
+                <h3>
+                <form action="/claim" method="POST">
+                    <div class="row">
+                        <div class="col-md-2">
+                            FAS Username:
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" name ="username" autocomplete="off" autofocus><br />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input class="btn btn-primary" type="submit" value="Claim badge">
+                        </div>
+                    </div>
+                </form>
+                </h3>
+            </div>
+        </div>
+    </body>
+</html>
