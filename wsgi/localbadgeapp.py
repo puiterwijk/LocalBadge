@@ -26,7 +26,7 @@ ADMIN_KEY = os.environ['ADMIN_KEY']
 
 app = flask.Flask(__name__)
 app.debug = True
-app.secret_key = 'FAKDSLFAJES%KLAJerlkwjer'
+app.secret_key = os.environ['OPENSHIFT_SECRET_TOKEN']
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ[
     'OPENSHIFT_POSTGRESQL_DB_URL']
 db = SQLAlchemy(app)
